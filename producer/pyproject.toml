@@ -1,15 +1,11 @@
-[build-system]
-requires = [ "setuptools>=60", "setuptools-scm>=8.0" ]
-build-backend = "setuptools.build_meta"
-
 [tool.setuptools_scm]
 version_file = "_version.py"
 
 [tool.pdm]
 distribution = false
 [project]
-name = "k8s-fastapi"
-description = "K8s FastAPI example deployment"
+name = "producer"
+description = "Default template for PDM package"
 readme = "README.md"
 requires-python = "==3.12.*"
 dynamic = ["version"]
@@ -23,6 +19,7 @@ authors = [
     {name = "Lauri Gates", email = "lauri.gates@forumvirium.fi"},
 ]
 license = {text = "MIT"}
+version = "0.1.0"
 
 [project.optional-dependencies]
 dev = [
