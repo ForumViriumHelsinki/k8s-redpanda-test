@@ -15,4 +15,4 @@ RUN uv venv && uv pip install -r pyproject.toml
 
 COPY --chown=app:app src .
 
-CMD ["python", "src/consumer"]
+CMD ["python", "consumer"]
