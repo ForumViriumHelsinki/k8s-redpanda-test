@@ -1,0 +1,11 @@
+services:
+  fastapi-example:
+    image: ghcr.io/forumviriumhelsinki/fastapi-example:latest
+    build: .
+    # volumes:
+    #   - ./app:/home/app
+    environment:
+      LOG_LEVEL: DEBUG
+      DEV_SERVER: 1
+    ports:
+      - 8000:8000
