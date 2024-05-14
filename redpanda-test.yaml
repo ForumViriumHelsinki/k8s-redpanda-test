@@ -2,20 +2,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: producer
+  name: consumer
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: producer
+      app: consumer
   template:
     metadata:
       labels:
-        app: producer
+        app: consumer
     spec:
       containers:
-      - name: producer
-        image: ghcr.io/forumviriumhelsinki/k8s-redpanda-test-producer:latest
+      - name: consumer
+        image: ghcr.io/forumviriumhelsinki/k8s-redpanda-test-consumer:latest
 ---
 apiVersion: apps/v1
 kind: Deployment
