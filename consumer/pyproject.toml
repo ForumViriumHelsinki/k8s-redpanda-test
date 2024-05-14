@@ -5,7 +5,9 @@ description = "Default template for PDM package"
 authors = [
     {name = "Lauri Gates", email = "lauri.gates@forumvirium.fi"},
 ]
-dependencies = []
+dependencies = [
+    "confluent-kafka>=2.4.0",
+]
 requires-python = "==3.12.*"
 readme = "README.md"
 license = {text = "MIT"}

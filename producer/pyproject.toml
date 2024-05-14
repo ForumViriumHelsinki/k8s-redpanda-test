@@ -14,6 +14,7 @@ dependencies = [
     "fastapi~=0.111.0",
     "pydantic~=2.7.1",
     "uvicorn~=0.29.0",
+    "confluent-kafka>=2.4.0",
 ]
 authors = [
     {name = "Lauri Gates", email = "lauri.gates@forumvirium.fi"},
