@@ -15,4 +15,4 @@ RUN pdm install --check --prod --no-editable
 
 COPY --chown=app:app src .
 
-CMD ["uvicorn", "k8s_fastapi.main:app", "--host", "0.0.0.0", "--proxy-headers"]
+CMD ["python", "src/producer"]
