@@ -1,11 +1,9 @@
 [tool.setuptools_scm]
 version_file = "_version.py"
 
-[tool.pdm]
-distribution = false
 [project]
 name = "producer"
-description = "Default template for PDM package"
+description = "Kafka producer test"
 readme = "README.md"
 requires-python = "==3.12.*"
 dynamic = ["version"]
@@ -14,7 +12,7 @@ dependencies = [
     "fastapi~=0.111.0",
     "pydantic~=2.7.1",
     "uvicorn~=0.29.0",
-    "confluent-kafka>=2.4.0",
+    "confluent-kafka>=2.3.0,<2.4.0",
 ]
 authors = [
     {name = "Lauri Gates", email = "lauri.gates@forumvirium.fi"},

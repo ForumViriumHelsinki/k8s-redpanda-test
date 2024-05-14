@@ -1,17 +1,28 @@
+[tool.setuptools_scm]
+version_file = "_version.py"
+
 [project]
 name = "consumer"
-version = "0.1.0"
-description = "Default template for PDM package"
+description = "Kafka consumer test"
+readme = "README.md"
+requires-python = "==3.12.*"
+dynamic = ["version"]
+
+dependencies = [
+    "confluent-kafka>=2.3.0,<2.4.0",
+]
 authors = [
     {name = "Lauri Gates", email = "lauri.gates@forumvirium.fi"},
 ]
-dependencies = [
-    "confluent-kafka>=2.4.0",
-]
-requires-python = "==3.12.*"
-readme = "README.md"
 license = {text = "MIT"}
+version = "0.1.0"
 
+[project.optional-dependencies]
+dev = [
+  "ruff",
+  "pre-commit",
+]
 
-[tool.pdm]
-distribution = false
+[tool.ruff]
+line-length = 120
+select = ["E", "F", "B", "Q"]
