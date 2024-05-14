@@ -1,0 +1,28 @@
+[tool.setuptools_scm]
+version_file = "_version.py"
+
+[project]
+name = "consumer"
+description = "Kafka consumer test"
+readme = "README.md"
+requires-python = "==3.12.*"
+dynamic = ["version"]
+
+dependencies = [
+    "confluent-kafka>=2.3.0,<2.4.0",
+]
+authors = [
+    {name = "Lauri Gates", email = "lauri.gates@forumvirium.fi"},
+]
+license = {text = "MIT"}
+version = "0.1.0"
+
+[project.optional-dependencies]
+dev = [
+  "ruff",
+  "pre-commit",
+]
+
+[tool.ruff]
+line-length = 120
+select = ["E", "F", "B", "Q"]
