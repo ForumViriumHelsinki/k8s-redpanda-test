@@ -31,4 +31,4 @@ COPY --from=build --chown=app:app $VIRTUAL_ENV $VIRTUAL_ENV
 COPY --chown=app:app src .
 
 EXPOSE 8000
-CMD ["uvicorn", "consumer.main:app", "--host", "0.0.0.0", "--proxy-headers"]
+CMD ["python", "consumer"]
