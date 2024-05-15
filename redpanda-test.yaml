@@ -16,6 +16,8 @@ spec:
       containers:
       - name: consumer
         image: ghcr.io/forumviriumhelsinki/k8s-redpanda-test-consumer:latest
+        ports:
+        - containerPort: 8000
 ---
 apiVersion: v1
 kind: Service
@@ -23,7 +25,8 @@ metadata:
   name: consumer
 spec:
   ports:
-    - port: 80
+    - name: http
+      port: 80
       targetPort: 8000
   selector:
     app: consumer
@@ -75,6 +78,8 @@ spec:
       containers:
       - name: producer
         image: ghcr.io/forumviriumhelsinki/k8s-redpanda-test-producer:latest
+        ports:
+        - containerPort: 8000
 ---
 apiVersion: v1
 kind: Service
@@ -82,7 +87,8 @@ metadata:
   name: producer
 spec:
   ports:
-    - port: 80
+    - name: http
+      port: 80
       targetPort: 8000
   selector:
     app: producer
