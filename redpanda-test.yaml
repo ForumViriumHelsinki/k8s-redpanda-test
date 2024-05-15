@@ -17,6 +17,47 @@ spec:
       - name: consumer
         image: ghcr.io/forumviriumhelsinki/k8s-redpanda-test-consumer:latest
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: consumer
+spec:
+  ports:
+    - port: 80
+      targetPort: 8000
+  selector:
+    app: consumer
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: consumer
+  namespace: redpanda-test
+  annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    # nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    # If you encounter a redirect loop or are getting a 307 response code
+    # then you need to force the nginx ingress to connect to the backend using HTTPS.
+    #
+    # nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - consumer.redpanda-test.dataportal.fi
+    secretName: consumer-redpanda-test-server-tls
+  rules:
+    - host: consumer.redpanda-test.dataportal.fi
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: consumer
+                port:
+                  name: http
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -42,7 +83,7 @@ metadata:
 spec:
   ports:
     - port: 80
-      targetPort: 8080
+      targetPort: 8000
   selector:
     app: producer
 ---
@@ -62,10 +103,10 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - redpanda-test.dataportal.fi
-    secretName: redpanda-test-server-tls
+    - producer.redpanda-test.dataportal.fi
+    secretName: producer-redpanda-test-server-tls
   rules:
-    - host: redpanda-test.dataportal.fi
+    - host: producer.redpanda-test.dataportal.fi
       http:
         paths:
           - pathType: Prefix
