@@ -39,3 +39,9 @@ kubectl apply -f redpanda-test.yaml
 uv venv
 uv pip sync
 ```
+
+## Development
+
+- release-please
+- skaffold
+- Conventional commits
