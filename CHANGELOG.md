@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/ForumViriumHelsinki/k8s-redpanda-test/compare/v0.2.1...v0.3.0) (2024-05-16)
+
+
+### Features
+
+* add skaffold configuration ([8277cb7](https://github.com/ForumViriumHelsinki/k8s-redpanda-test/commit/8277cb750955f838550e4887492cf89cfae19a86))
+
 ## [0.2.0](https://github.com/ForumViriumHelsinki/k8s-redpanda-test/compare/v0.1.5...v0.2.0) (2024-05-15)
 
 
