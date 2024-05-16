@@ -1,0 +1,17 @@
+apiVersion: skaffold/v4beta10
+kind: Config
+metadata:
+  name: k-s-redpanda-test
+build:
+  artifacts:
+    - image: ghcr.io/forumviriumhelsinki/k8s-redpanda-test-consumer
+      context: consumer
+      docker:
+        dockerfile: Dockerfile
+    - image: ghcr.io/forumviriumhelsinki/k8s-redpanda-test-producer
+      context: producer
+      docker:
+        dockerfile: Dockerfile
+manifests:
+  rawYaml:
+    - redpanda-test.yaml
