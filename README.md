@@ -2,46 +2,24 @@
 
 ## Summary
 
-### Prerequisites
-
-You should have `kubectl` installed and configured.
-
-### Build
-
-Automated CI/CD builds are triggered when you push changes to GitHub on the
-main branch or tag a commit with a version number.
-
-Docker:
-
-```shell
-docker build consumer -t redpanda-consumer && docker run --rm redpanda-consumer:latest
-docker build producer -t redpanda-producer && docker run --rm redpanda-producer:latest
-```
-
-Podman:
-
-```shell
-podman build consumer -t redpanda-consumer && podman run --rm redpanda-consumer:latest
-podman build producer -t redpanda-producer && podman run --rm redpanda-producer:latest
-```
-
-### Deploy
-
-Apply the manifests:
-
-```shell
-kubectl apply -f redpanda-test.yaml
-```
-
-## Upgrading dependencies
-
-```shell
-uv venv
-uv pip sync
-```
+Redpanda testing
 
 ## Development
 
-- release-please
-- skaffold
-- Conventional commits
+- Prerequisites
+    - Skaffold
+        - Skaffold handles the workflow for building, pushing and deploying
+        your application, allowing you to focus on what matters most: writing
+        code
+    - Docker Desktop Kubernetes, minikube or k3d for running the services on
+    your workstation using skaffold
+- Run `skaffold dev`
+    - Skaffold will build images, deploy the service stack and watch for changes
+- Make changes to code 
+    - Skaffold will re-build and re-deploy when changes are detected
+- Commit & push
+    - Use Conventional commits
+- Create pull request
+- Merge pull request to main (use rebase or squash)
+- release-please will create pull requests for new releases based on commits
+- New releases are deployed automatically
