@@ -10,11 +10,14 @@ ENV PYTHONUNBUFFERED 1
 ENV VIRTUAL_ENV=/opt/venv
 ENV PATH="${VIRTUAL_ENV}/bin:$PATH"
 
-RUN apk add --no-cache python3-dev libstdc++ g++ librdkafka librdkafka-dev
+RUN --mount=type=cache,target=/var/cache/apk \
+apk add python3-dev libstdc++ g++ librdkafka librdkafka-dev
 RUN pip install uv
 
 COPY pyproject.toml ./
-RUN uv venv $VIRTUAL_ENV && uv pip install -r pyproject.toml
+RUN --mount=type=cache,target=/root/.cache/uv \
+uv venv $VIRTUAL_ENV && \
+uv pip install -r pyproject.toml
 
 FROM python:3.12-alpine
 
