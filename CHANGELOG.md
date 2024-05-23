@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/ForumViriumHelsinki/k8s-redpanda-test/compare/v0.3.0...v0.4.0) (2024-05-23)
+
+
+### Features
+
+* **dockerfiles:** optimize builds with cache mounts ([#16](https://github.com/ForumViriumHelsinki/k8s-redpanda-test/issues/16)) ([a729b37](https://github.com/ForumViriumHelsinki/k8s-redpanda-test/commit/a729b375235f20ee0bd5c1c620c8162b464e7cba))
+
 ## [0.3.0](https://github.com/ForumViriumHelsinki/k8s-redpanda-test/compare/v0.2.1...v0.3.0) (2024-05-16)
 
 
